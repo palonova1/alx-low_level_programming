@@ -1,10 +1,10 @@
-#include "main.h" 
+#include "main.h"
 
 /**
-* main - prints putchar
-*
-* Return: Always 0
-*/
+  * main - print _putcher
+  *
+  * Return: Always 0
+  */
 int main(void)
 {
 	_putchar('_');
