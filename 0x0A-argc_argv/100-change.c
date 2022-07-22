@@ -1,42 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 /**
- * argstostr - main entry
- * @ac: int input
- * @av: double pointer array
- * Return: 0
- */
-char *argstostr(int ac, char **av)
+* main - prints the minimum number of coins to make change for a given amount
+* @argc: arguement count
+* @argv: array of pointers to arguement strings
+* Return: number of coins or 1
+**/
+int main(int argc, char *argv[])
 {
-	int i, n, k = 0, len = 0;
-	char *str;
+	int amount, coins;
 
-	if (ac == 0 || av == NULL)
-		return (NULL);
-
-	for (i = 0; i < ac; i++)
+	if (argc != 2)
 	{
-		for (n = 0; av[i][n]; n++)
-			len++;
+		printf("Error\n");
+		return (1);
 	}
-	len += ac;
-
-	str = malloc(sizeof(char) * len + 1);
-	if (str == NULL)
-		return (NULL);
-
-	for (i = 0; i < ac; i++)
+	amount = atoi(argv[1]);
+	coins = 0;
+	if (amount > 25)
 	{
-		for (n = 0; av[i][n]; n++)
-		{
-			str[k] = av[i][n];
-			k++;
-		}
-		if (str[k] == '\0')
-		{
-			str[k++] = '\n';
-		}
+		while (amount >= 25)
+			amount -= 25, coins++;
 	}
-	return (str);
+	if (amount > 10 && amount < 25)
+	{
+		while (amount >= 10)
+			amount -= 10, coins++;
+	}
+	if (amount > 5 && amount < 10)
+	{
+		while (amount >= 5)
+			amount -= 5, coins++;
+	}
+	if (amount > 2 && amount < 5)
+	{
+		while (amount >= 2)
+			amount -= 2, coins++;
+	}
+	if (amount == 1 || amount == 2 || amount == 5 ||
+	    amount == 10 || amount == 25)
+	{
+		coins++;
+	}
+	printf("%d\n", coins);
+	return (0);
 }
