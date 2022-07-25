@@ -1,31 +1,18 @@
-#include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-
+#include "main.h"
 /**
-  * create_array - creates an array of chars
-  * @size: The size of the array
-  * @c: The char to fill in the array
-  *
-  * Return: The array filled
-  */
-char *create_array(unsigned int size, char c)
+ * malloc_checked - Entry Point
+ * @b: input amount
+ * Return: pointer to new mem
+ */
+void *malloc_checked(unsigned int b)
 {
-	unsigned int i;
-	char *s;
+	void *n;
 
-	if (size == 0)
-		return (NULL);
+	n = malloc(b);
 
-	s = malloc(size * sizeof(char));
-
-	if (s == NULL)
-		return (NULL);
-
-	for (i = 0; i < size; i++)
-	{
-		s[i] = c;
-	}
-
-	return (s);
+	if (n == NULL)
+		exit(98);
+	return (n);
 }
