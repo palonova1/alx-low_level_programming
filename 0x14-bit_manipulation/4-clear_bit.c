@@ -3,19 +3,13 @@
 #include "holberton.h"
 
 /**
-  * clear_bit - Sets the value of a bit to 0 at a given index
-  * @n: The number to modify
-  * @index: The index in the number to modify
-  *
-  * Return: 1 if it worked, or -1 if an error occurred
+  * clear_bit - sets a bit at index to zero
+  * @n: pointer to number
+  * @index: index to change
+  * Return: 1 on success, -1 on failure
   */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	if (index < sizeof(unsigned long int) * 8)
-	{
-		*n &= (~(1 << index));
-		return (1);
-	}
-
-	return (-1);
+	*n = *n & ~(1 << index);
+	return ((index > 8 * sizeof(*n)) ? -1 : 1);
 }
