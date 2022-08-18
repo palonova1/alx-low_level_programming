@@ -3,10 +3,11 @@
 #include "main.h"
 
 /**
- * main - check the code
- *
- * Return: Always 0.
- */
+  * clear_bit - sets a bit at index to zero
+  * @n: pointer to number
+  * @index: index to change
+  * Return: 1 on success, -1 on failure
+  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
 	*n = *n & ~(1 << index);
